@@ -25,7 +25,7 @@ const SectionCard = ({
         transition: 'all 0.3s ease',
         '&:hover': {
           boxShadow: (theme) => theme.shadows[2],
-          borderColor: 'primary.light',
+          borderColor: 'white',
         }
       }}
       {...props}
@@ -35,15 +35,21 @@ const SectionCard = ({
         action={
           actionText && (
             <Button 
-              variant="text" 
+              variant="contained" 
               endIcon={<ChevronRight size={16} />}
               size="small"
               onClick={onActionClick}
               sx={{ 
-                transition: 'all 0.2s ease',
+                borderRadius: 2,
+                bgcolor: 'white',
+                color: 'black',
+                px: 2,
+                py: 1,
+                transition: 'all 0.3s ease',
                 '&:hover': {
-                  transform: 'translateX(3px)',
-                  color: 'primary.main'
+                  transform: 'translateX(3px) translateY(-2px)',
+                  bgcolor: '#f5f5f5',
+                  boxShadow: '0 4px 12px rgba(255, 255, 255, 0.3)'
                 }
               }}
             >

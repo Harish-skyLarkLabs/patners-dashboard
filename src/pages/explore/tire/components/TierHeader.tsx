@@ -4,26 +4,32 @@ import { ArrowLeft } from 'lucide-react';
 
 const TierHeader = ({ bundle, subBundle, onBackClick, isDarkMode }) => {
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
+    <Box sx={{ 
+      display: 'flex', 
+      alignItems: 'center', 
+      p: 3,
+      // bgcolor: '#0a0a0a',
+      borderBottom: '1px solid #333'
+    }}>
       <IconButton
         onClick={onBackClick}
-        sx={{ mr: 2, bgcolor: isDarkMode ? 'grey.700' : 'grey.100' }}
+        sx={{ 
+          mr: 3, 
+          bgcolor: '#1a1a1a',
+          border: '1px solid #333',
+          color: 'white',
+          '&:hover': {
+            bgcolor: '#2a2a2a'
+          }
+        }}
       >
         <ArrowLeft size={20} />
       </IconButton>
       <Box>
-        <Stack direction="row" alignItems="center" spacing={1}>
-          <Typography variant="h5" fontWeight="bold" color="text.primary">
-            {bundle.name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            /
-          </Typography>
-          <Typography variant="h5" fontWeight="bold" color="text.primary">
-            {subBundle.name}
-          </Typography>
-        </Stack>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="#888" sx={{ mb: 0.5 }}>
+          {bundle?.name?.replace(' SUITE', '') || 'Security Suite'} / {subBundle?.name?.replace(' Package', '') || 'Security Package'}
+        </Typography>
+        <Typography variant="h6" fontWeight="medium" color="white">
           Choose the tier that best fits your needs
         </Typography>
       </Box>

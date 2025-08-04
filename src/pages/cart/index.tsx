@@ -110,7 +110,7 @@ const Cart = () => {
     if (checkoutStatus?.error) {
      
       // Check for the unique constraint error
-      if (checkoutStatus.error?.non_field_errors[0] ) {
+      if (checkoutStatus.error && typeof checkoutStatus.error === 'object' && 'non_field_errors' in checkoutStatus.error && Array.isArray((checkoutStatus.error as any).non_field_errors) && (checkoutStatus.error as any).non_field_errors[0]) {
       // setSnackbarMessage('You already have an active subscription for one or more bundles in your cart. You cannot purchase the same bundle twice.');
       toast.error('You already have an active subscription for one or more bundles in your cart. You cannot purchase the same bundle twice.')
     } else {
@@ -449,7 +449,7 @@ const Cart = () => {
         autoHideDuration={6000}
         onClose={handleSnackbarClose}
         message={snackbarMessage}
-        severity={snackbarSeverity}
+        // severity={snackbarSeverity}
       />
     </Container>
   );

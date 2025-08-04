@@ -25,45 +25,50 @@ const SummaryCard = ({
       sx={{ 
         border: '1px solid', 
         borderColor: 'divider',
+        borderRadius: 4,
+        background: 'linear-gradient(135deg,rgb(0, 0, 0) 0%,rgb(18, 18, 18) 100%)',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
         transition: 'all 0.3s ease',
         '&:hover': {
-          transform: 'translateY(-5px)',
-          boxShadow: (theme) => theme.shadows[4],
-          borderColor: `${color}.light`
+          transform: 'translateY(-8px)',
+          boxShadow: '0 12px 40px rgba(0, 0, 0, 0.15)',
+          borderColor: 'white'
         }
       }}
     >
-      <CardContent>
+      <CardContent sx={{ p: 3, '&:last-child': { pb: 3 } }}>
         <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 2 }}>
-          <Typography color="text.secondary" variant="subtitle2">
+          <Typography color="white" variant="subtitle2">
             {title}
           </Typography>
-          <Avatar 
-            sx={{ 
-              bgcolor: `${color}.main`, 
-              width: 40, 
-              height: 40,
-              transition: 'all 0.3s ease',
-              '&:hover': {
-                transform: 'scale(1.1)',
-                bgcolor: `${color}.dark`
-              }
-            }}
-          >
-            {icon}
-          </Avatar>
+          {icon && (
+            <Avatar 
+              sx={{ 
+                bgcolor: `${color}.main`, 
+                width: 48, 
+                height: 48,
+                borderRadius: 3,
+                boxShadow: `0 4px 12px rgba(0, 0, 0, 0.1)`,
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  transform: 'scale(1.1)',
+                  bgcolor: `${color}.dark`,
+                  boxShadow: `0 6px 16px rgba(0, 0, 0, 0.15)`
+                }
+              }}
+            >
+              {icon}
+            </Avatar>
+          )}
         </Stack>
-        <Typography variant="h4" fontWeight="bold">
+        <Typography variant="h4" fontWeight="bold" color="white">
           {value}
         </Typography>
         
         {subtitle && (
-          <Stack direction="row" spacing={1} alignItems="center" sx={{ mt: 1 }}>
-            {subtitleIcon}
-            <Typography variant={buttonText ? "caption" : "body2"} color={buttonText ? "text.secondary" : `${color}.main`}>
-              {subtitle}
-            </Typography>
-          </Stack>
+          <Typography variant={buttonText ? "caption" : "body2"} color="white" sx={{ mt: 1 }}>
+            {subtitle}
+          </Typography>
         )}
         
         {buttonText && (
@@ -72,13 +77,18 @@ const SummaryCard = ({
             size="small" 
             endIcon={<ChevronRight size={16} />}
             onClick={onButtonClick}
-            sx={{ 
-              mt: 1, 
-              p: 0,
-              transition: 'all 0.2s ease',
+                        sx={{ 
+              mt: 2, 
+              borderRadius: 2,
+              px: 2,
+              py: 1,
+              bgcolor: 'white',
+              color: 'black',
+              transition: 'all 0.3s ease',
               '&:hover': {
-                transform: 'translateX(5px)',
-                color: `${color}.main`
+                transform: 'translateX(5px) translateY(-2px)',
+                bgcolor: '#f5f5f5',
+                boxShadow: `0 4px 12px rgba(255, 255, 255, 0.3)`
               }
             }}
           >

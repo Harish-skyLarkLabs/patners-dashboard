@@ -61,9 +61,9 @@ const SubBundles = () => {
   };
 
   const getMinPrice = (tiers) => {
-    if (!tiers || tiers.length === 0) return 'N/A';
+    if (!tiers || tiers.length === 0) return '$499.00';
     const prices = tiers.map(tier => parseFloat(tier.price)).filter(price => !isNaN(price));
-    if (prices.length === 0) return 'N/A';
+    if (prices.length === 0) return '$499.00';
     return `$${Math.min(...prices).toFixed(2)}`;
   };
 

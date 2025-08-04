@@ -30,7 +30,11 @@ import {
   Cpu,
   FolderArchive,
   MapPin,
-  User2
+  User2,
+  // CreditCard,
+  // Users,
+  // HelpCircle,
+  // FileText
 } from 'lucide-react';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -109,12 +113,36 @@ const menuItems = [
     icon: FolderArchive, // Replace with a better icon if needed
     path: routes.explore.path,
   },
+  // {
+  //   id: 'subscriptions',
+  //   title: 'Subscriptions',
+  //   icon: FileText,
+  //   path: '/subscriptions',
+  // },
+  // {
+  //   id: 'billing',
+  //   title: 'Billing & Payments',
+  //   icon: CreditCard,
+  //   path: '/billing',
+  // },
+  // {
+  //   id: 'users',
+  //   title: 'User Management',
+  //   icon: Users,
+  //   path: '/users',
+  // },
   {
     id: 'settings',
     title: 'Settings',
     icon: Settings,
     path: routes.settings.path,
   },
+  // {
+  //   id: 'help',
+  //   title: 'Help & Support',
+  //   icon: HelpCircle,
+  //   path: '/help',
+  // },
 ];
 interface SidebarProps {
   open: boolean;

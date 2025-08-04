@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Box, useTheme } from '@mui/material';
@@ -156,28 +155,26 @@ const Tire = () => {
   }
 
   return (
-    <Box sx={{ width: '100%', px: 3 }}>
-      <Box sx={{ py: 4 }}>
-        {/* Header with back button */}
-        <TierHeader 
-          bundle={selectedBundle}
-          subBundle={selectedSubBundle}
-          onBackClick={handleBackToSubBundles}
-          isDarkMode={isDarkMode}
-        />
-        
-        {/* Tier grid */}
-        <TierGrid 
-          tiers={selectedSubBundle.tires}
-          isInCart={isInCart}
-          onAddToCart={addToCart}
-          onRemoveFromCart={removeFromCart}
-          getTierColor={getTierColor}
-          getTierIcon={getTierIcon}
-          getTierDescription={getTierDescription}
-          theme={theme}
-        />
-      </Box>
+    <Box sx={{ width: '100%', minHeight: '100vh' }}>
+      {/* Header with back button */}
+      <TierHeader 
+        bundle={selectedBundle}
+        subBundle={selectedSubBundle}
+        onBackClick={handleBackToSubBundles}
+        isDarkMode={false}
+      />
+      
+      {/* Tier grid */}
+      <TierGrid 
+        tiers={selectedSubBundle.tires}
+        isInCart={isInCart}
+        onAddToCart={addToCart}
+        onRemoveFromCart={removeFromCart}
+        getTierColor={getTierColor}
+        getTierIcon={getTierIcon}
+        getTierDescription={getTierDescription}
+        theme={theme}
+      />
     </Box>
   );
 };

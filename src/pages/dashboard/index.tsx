@@ -23,6 +23,8 @@ import SummaryCard from './components/SummaryCard.tsx';
 import SectionCard from './components/SectionCard.tsx';
 import SubscriptionItem from './components/SubscriptionItem.tsx';
 import BundleCard from './components/BundleCard.tsx';
+import UsageAnalytics from './components/UsageAnalytics.tsx';
+import PlansTable from './components/PlansTable.tsx';
 
 export const formatCurrency = (amount) => {
   return new Intl.NumberFormat('en-US', {
@@ -83,10 +85,8 @@ const Dashboard = () => {
           <SummaryCard 
             title="Total Spent"
             value={formatCurrency(total_spent)}
-            icon={<DollarSign size={20} />}
             color="primary"
             subtitle={`Customer: ${customer?.name || 'N/A'}`}
-            subtitleIcon={<TrendingUp size={16} />}
           />
         </Grid>
         
@@ -94,7 +94,6 @@ const Dashboard = () => {
           <SummaryCard 
             title="Active Plans"
             value={activeSubscriptions}
-            icon={<CheckCircle size={20} />}
             color="success"
             subtitle={`From ${subscriptions.length} total subscriptions`}
           />
@@ -104,7 +103,6 @@ const Dashboard = () => {
           <SummaryCard 
             title="Expiring Soon"
             value={expiringSubscriptions}
-            icon={<Clock size={20} />}
             color="warning"
             subtitle="Plans expiring within 15 days"
           />
@@ -114,7 +112,6 @@ const Dashboard = () => {
           <SummaryCard 
             title="Inactive Plans"
             value={inactiveSubscriptions}
-            icon={<AlertCircle size={20} />}
             color="error"
             buttonText="Renew Now"
             onButtonClick={() => console.log('Renew now clicked')}
@@ -122,31 +119,13 @@ const Dashboard = () => {
         </Grid>
       </Grid>
       
-      {/* Main Content Grid */}
-      <Grid container spacing={4}>
-        {/* Subscriptions List */}
+      {/* Usage Analytics Chart */}
+      <Grid container spacing={4} sx={{ mb: 4 }}>
         <Grid item xs={12} lg={8}>
-          <SectionCard 
-            title="Your Plans"
-            actionText="View All"
-            onActionClick={() => console.log('View all plans clicked')}
-          >
-            <List sx={{ width: '100%' }}>
-              {subscriptions.map((subscription) => (
-                <React.Fragment key={subscription.id}>
-                  <SubscriptionItem 
-                    subscription={subscription}
-                    onClick={() => console.log('Subscription clicked', subscription.id)}
-                  />
-                  <Divider variant="inset" component="li" sx={{ ml: 0 }} />
-                </React.Fragment>
-              ))}
-            </List>
-          </SectionCard>
+          <UsageAnalytics />
         </Grid>
-        
-        {/* Latest Bundles */}
         <Grid item xs={12} lg={4}>
+          {/* Latest Bundles */}
           <SectionCard 
             title="Latest Bundles"
             actionText="Explore"
@@ -163,16 +142,18 @@ const Dashboard = () => {
               ))}
               
               <Button 
-                variant="outlined" 
+                variant="contained" 
                 fullWidth 
                 sx={{ 
                   mt: 2,
+                  borderRadius: 2,
+                  bgcolor: 'white',
+                  color: 'black',
                   transition: 'all 0.3s ease',
                   '&:hover': {
                     transform: 'translateY(-3px)',
-                    boxShadow: (theme) => theme.shadows[2],
-                    bgcolor: 'primary.main',
-                    color: 'white'
+                    bgcolor: '#f5f5f5',
+                    boxShadow: '0 4px 12px rgba(255, 255, 255, 0.3)'
                   }
                 }}
                 endIcon={<ArrowUpRight size={16} />}
@@ -181,6 +162,14 @@ const Dashboard = () => {
               </Button>
             </Stack>
           </SectionCard>
+        </Grid>
+      </Grid>
+      
+      {/* Main Content Grid */}
+      <Grid container spacing={4}>
+        {/* Your Plans Table - Full Width */}
+        <Grid item xs={12}>
+          <PlansTable subscriptions={subscriptions} />
         </Grid>
       </Grid>
     </Box>
