@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
         >
           <Box sx={{ mb: { xs: 2, sm: 0 } }}>
             <Typography variant="body2" color="text.secondary" align="center">
-              © {new Date().getFullYear()} Skylark Labs Subscription Hub. All rights reserved.
+              © {new Date().getFullYear()} Skylark Labs Patner Portal. All rights reserved.
             </Typography>
           </Box>
           <Box

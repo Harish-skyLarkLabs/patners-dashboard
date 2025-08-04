@@ -94,7 +94,7 @@ const Header: React.FC<HeaderProps> = ({
             style={{ height: 40, width: 40, marginRight: 12 }}
           />
           <Typography variant="h6" noWrap fontWeight="bold">
-            Subscription Hub
+            Patner Portal
           </Typography>
         </Box>
 

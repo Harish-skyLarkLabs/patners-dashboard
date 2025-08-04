@@ -46,7 +46,7 @@ const BrandSection = ({ isMobile }) => {
           style={{ height: 50, width: 50, marginRight: 16 }}
         />
         <Typography variant="h5" fontWeight="bold" component="div">
-          Subscription Hub
+          Patner Portal
         </Typography>
       </Box>
       
@@ -62,7 +62,7 @@ const BrandSection = ({ isMobile }) => {
           
           <Box sx={{ mt: 'auto', opacity: 0.7 }}>
             <Typography variant="caption">
-              © 2025 Subscription Hub. All rights reserved.
+              © 2025 Patner Portal. All rights reserved.
             </Typography>
           </Box>
         </>
